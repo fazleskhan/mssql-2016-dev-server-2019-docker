@@ -19,4 +19,4 @@ RUN powershell -Command \
         set-itemproperty -path 'HKLM:\software\microsoft\microsoft sql server\mssql13.SQLDEV\mssqlserver\supersocketnetlib\tcp\ipall' -name tcpport -value 1433 ; \
         set-itemproperty -path 'HKLM:\software\microsoft\microsoft sql server\mssql13.SQLDEV\mssqlserver\' -name LoginMode -value 2 ;
 
-CMD powershell ./start -sa_password %sa_password% -attach_dbs \"%attach_dbs%\" -Verbose
+        
