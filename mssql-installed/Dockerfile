@@ -14,3 +14,12 @@ RUN powershell -Command \
 
 
 RUN c:\\mssql-install\\setup.exe /q /ACTION=Install /INSTANCENAME=SQLDEV /FEATURES=SQLEngine /UPDATEENABLED=0 /SQLSVCACCOUNT="NT AUTHORITY\System" /SQLSYSADMINACCOUNTS="BUILTIN\ADMINISTRATORS" /TCPENABLED=1 /NPENABLED=0 /IACCEPTSQLSERVERLICENSETERMS
+
+RUN powershell -Command Remove-Item -LiteralPath "c:\\mssql-install" -Force -Recurse
+
+# Need to test the previous delete command completed because file io are async operations
+# image create will exit before the file is actually removed
+RUN powershell while ((Test-Path "c:\\mssql-install")) {  \
+                                Get-ChildItem -Path . -Name ; \
+                                Start-Sleep 10 \
+                        }
