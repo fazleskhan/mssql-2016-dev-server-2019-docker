@@ -13,3 +13,7 @@ docker stop mydb
 # Example to connect to a running container with powershell
 
 docker container exec -it mydb powershell
+
+# Example of using Invoke-Sqlcmd to query dockerized database
+
+Invoke-Sqlcmd -ServerIntance localhost -U sa -P '<YOUR SA PASSWORD> -Query "SELECT TOP 10 * FROM SYSOBJECTS"
