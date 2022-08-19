@@ -3,6 +3,8 @@
 
 FROM fazleskhan/mssql-dev:mssql-configured
 
+ENV sa_password _
+
 # make install files accessible
 COPY . /
 WORKDIR /
@@ -34,6 +36,9 @@ RUN powershell -Command \
                          Get-Location ; \
                         Get-PSDrive C ; \
                         Get-ChildItem -Path . -Name ;
+
+# Executed when a container is created from an image
+ENTRYPOINT powershell ./update-credentials -sa_password %sa_password% -Verbose
 
 
 
