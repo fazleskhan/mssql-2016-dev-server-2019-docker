@@ -64,5 +64,7 @@ RUN powershell while ((Test-Path 'C:\AdventureWorks2008R2-Full Database Backup.b
 RUN powershell -Command \
                          Get-Location ; \
                         Get-PSDrive C ; \
-                        Get-ChildItem -Path . -Name ;                                                       
-                        
+                        Get-ChildItem -Path . -Name ;            
+                                                                   
+# Executed when a container is created from an image
+ENTRYPOINT powershell ./start -sa_password %sa_password% -Verbose                        
