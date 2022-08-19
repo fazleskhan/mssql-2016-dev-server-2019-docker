@@ -6,6 +6,10 @@ docker create -p 1433:1433 --name mydb --env sa_password=<YOUR SA PASSWORD>fazle
 
 docker start mydb
 
-# Example docker conmmand to start attached to the container's command line
+# Example docker conmmand to stop a daemon container
 
-docker start -i mydb
+docker stop mydb
+
+# Example to connect to a running container with powershell
+
+docker container exec -it mydb powershell

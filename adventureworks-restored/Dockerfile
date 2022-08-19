@@ -38,7 +38,9 @@ RUN powershell -Command \
                         Get-ChildItem -Path . -Name ;
 
 # Executed when a container is created from an image
-ENTRYPOINT powershell ./update-credentials -sa_password %sa_password% -Verbose
+ENTRYPOINT powershell ./start -sa_password %sa_password% -Verbose
+
+
 
 
 
